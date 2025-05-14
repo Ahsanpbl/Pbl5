@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RecycLearner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #9ad3bc, #f3eac2, #f5b461);
+            background-size: 600% 600%;
+            animation: bgAnimation 15s ease infinite;
+        }
+
+        @keyframes bgAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background-color: rgba(46, 139, 87, 0.9);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+        }
+
+        .subscription-plan button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .subscription-plan button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        #payment-form {
+            display: none; /* Hidden by default */
+            max-width: 500px;
+            margin: 2rem auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #payment-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        #payment-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>RecycLearner</h1>
+        <p>Transform your waste into something useful with AI guidance</p>
+    </header>
+
+    <div class="container mt-5">
+        <h2>Subscription Plans</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="subscription-plan">
+                    <h3>Basic</h3>
+                    <p>Access to basic recycling guides.</p>
+                    <h4>$9.99/month</h4>
+                    <button onclick="showPaymentForm('Basic Plan')">Subscribe</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="subscription-plan">
+                    <h3>Premium</h3>
+                    <p>Includes advanced recycling techniques and priority support.</p>
+                    <h4>$19.99/month</h4>
+                    <button onclick="showPaymentForm('Premium Plan')">Subscribe</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="subscription-plan">
+                    <h3>Enterprise</h3>
+                    <p>Custom solutions for businesses with waste management needs.</p>
+                    <button onclick="alert('Please contact us at enterprise@recyclearner.com for enterprise solutions.')">Contact Us</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="payment-form">
+            <h2>Payment Details</h2>
+            <p id="selected-plan"></p>
+            <form>
+                <div class="mb-3">
+                    <label for="cardholder-name" class="form-label">Cardholder Name</label>
+                    <input type="text" class="form-control" id="cardholder-name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="card-number" class="form-label">Card Number</label>
+                    <input type="text" class="form-control" id="card-number" required>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="expiry-date" class="form-label">Expiry Date</label>
+                        <input type="text" class="form-control" id="expiry-date" placeholder="MM/YY" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cvv" class="form-label">CVV</label>
+                        <input type="text" class="form-control" id="cvv" required>
+                    </div>
+                </div>
+                <button type="submit">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 RecycLearner. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showPaymentForm(plan) {
+            document.getElementById("selected-plan").innerText = "You selected: " + plan;
+            document.getElementById("payment-form").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
