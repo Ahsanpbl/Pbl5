@@ -38,9 +38,10 @@
             backdrop-filter: blur(4px);
         }
 
-        header h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 3rem;
+        header img {
+            max-height: 100px;
+            margin: 0 10px;
+            vertical-align: middle;
         }
 
         .nav-tabs .nav-link {
@@ -83,7 +84,9 @@
             color: #2e8b57;
         }
 
-        .subscription-plan button {
+        .subscription-plan button,
+        #payment-form button,
+        #waste-form button {
             background-color: #007BFF;
             color: white;
             border: none;
@@ -93,31 +96,20 @@
             font-weight: 600;
         }
 
-        .subscription-plan button:hover {
+        .subscription-plan button:hover,
+        #payment-form button:hover,
+        #waste-form button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
         }
 
-        #payment-form button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: 600;
-        }
-
-        #payment-form button:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>RecycLearner</h1>
+        <img src="/mnt/data/1000003057.png" alt="RecycLearner Logo">
+        <img src="/mnt/data/1000003059-removebg-preview.png" alt="Recycling Robot Logo">
         <p>Transform your waste into something useful with AI guidance</p>
     </header>
 
@@ -186,7 +178,7 @@
                         <input type="text" class="form-control" id="waste-description" name="waste-description"
                             placeholder="e.g., plastic bottles, cardboard boxes" />
                     </div>
-                    <button type="submit" class="btn btn-dark">Get Recycling Instructions</button>
+                    <button type="submit" class="btn">Get Recycling Instructions</button>
                 </form>
             </div>
 
@@ -248,7 +240,7 @@
                         <label for="billing-email" class="form-label">Billing Email</label>
                         <input type="email" class="form-control" id="billing-email" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit Payment</button>
+                    <button type="submit" class="btn">Submit Payment</button>
                 </form>
             </div>
         </div>
@@ -261,6 +253,16 @@
             paymentTab.style.display = 'block';
             paymentTab.click();
         }
+
+        const navTabs = document.querySelectorAll(".nav-link");
+        navTabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                if (tab.id !== "payment-tab") {
+                    const paymentTab = document.getElementById('payment-tab');
+                    paymentTab.style.display = 'none';
+                }
+            });
+        });
     </script>
 
     <footer>
